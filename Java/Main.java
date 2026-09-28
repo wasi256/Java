@@ -3,25 +3,25 @@ import java.util.List;
 
 // 1. Observer Interface
 // Defines the common contract for what an observer must do when updated[cite: 1]
-interface Observer {
+interface BasicObserver {
     void update();
 }
 
 // 2. Subject Class
 // Maintains a list of observers and provides methods to attach, detach, and notify[cite: 1]
-class Subject {
-    private List<Observer> observers = new ArrayList<>();
+class BasicSubject {
+    private List<BasicObserver> observers = new ArrayList<>();
 
-    public void attach(Observer observer) {
+    public void attach(BasicObserver observer) {
         observers.add(observer);
     }
 
-    public void detach(Observer observer) {
+    public void detach(BasicObserver observer) {
         observers.remove(observer);
     }
 
     public void notifyObservers() {
-        for (Observer observer : observers) {
+        for (BasicObserver observer : observers) {
             observer.update();
         }
     }
@@ -29,7 +29,7 @@ class Subject {
 
 // 3. Concrete Subject (Weather Station)
 // Contains the actual state (temperature) and triggers notifications upon change[cite: 1]
-class WeatherStation extends Subject {
+class BasicWeatherStation extends BasicSubject {
     private int temperature;
 
     public void setTemperature(int newTemperature) {
@@ -44,14 +44,14 @@ class WeatherStation extends Subject {
 }
 
 // 4. Concrete Observers (Phone Display and TV Display)
-class PhoneDisplay implements Observer {
+class PhoneDisplay implements BasicObserver {
     @Override
     public void update() {
         System.out.println("-> Phone display updated: New temperature received.");
     }
 }
 
-class TVDisplay implements Observer {
+class TVDisplay implements BasicObserver {
     @Override
     public void update() {
         System.out.println("-> TV display updated: New temperature received.");
@@ -62,11 +62,11 @@ class TVDisplay implements Observer {
 public class Main {
     public static void main(String[] args) {
         // Step 1: Create the Subject[cite: 1]
-        WeatherStation weatherStation = new WeatherStation();
+        BasicWeatherStation weatherStation = new BasicWeatherStation();
 
         // Step 2: Create the Observers[cite: 1]
-        Observer phoneDisplay = new PhoneDisplay();
-        Observer tvDisplay = new TVDisplay();
+        BasicObserver phoneDisplay = new PhoneDisplay();
+        BasicObserver tvDisplay = new TVDisplay();
 
         // Step 3: Register Observers with the Subject using attach()[cite: 1]
         weatherStation.attach(phoneDisplay);
