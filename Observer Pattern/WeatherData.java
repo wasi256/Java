@@ -12,18 +12,18 @@ public class WeatherData implements Subject {
     }
 
     @Override
-    public void registerObserver(Observer observer) {
-        observers.add(observer);
+    public void registerObserver(Observer o) {
+        observers.add(o);
     }
 
     @Override
-    public void removeObserver(Observer observer) {
-        observers.remove(observer);
+    public void removeObserver(Observer o) {
+        observers.remove(o);
     }
 
     @Override
     public void notifyObservers() {
-        for (Observer observer : observers) {
+        for (Observer observer: observers) {
             observer.update(temperature, humidity, pressure);
         }
     }
