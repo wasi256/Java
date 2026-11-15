@@ -1,0 +1,14 @@
+public class CountingDuckFactory extends AbstractDuckFactory {
+
+    public Quackable createMallardDuck() {
+        return new QuackableCounter(new Mallard());
+    }
+
+    public Quackable createDuckCall() {
+        return new QuackableCounter(new DuckCall());
+    }
+
+    public Quackable createRubberDuck() {
+        return new QuackableCounter(new RubberDuck());
+    }
+}
