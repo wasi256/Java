@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class DuckSimulator {
     public static void main(String[] args) {
         DuckSimulator simulator = new DuckSimulator();
@@ -6,19 +8,16 @@ public class DuckSimulator {
     }
 
     void simulate(AbstractDuckFactory duckFactory) {
-Quackable mallardDuck = duckFactory.createMallardDuck();
-Quackable redheadDuck = duckFactory.createRedheadDuck();
-Quackable duckCall = duckFactory.createDuckCall();
-Quackable rubberDuck = duckFactory.createRubberDuck();
-Quackable gooseDuck = new GooseAdapter(new Goose());
+        Flock flock = new Flock();
+        flock.add(duckFactory.createMallardDuck());
+        flock.add(duckFactory.createRedheadDuck());
+        flock.add(duckFactory.createDuckCall());
+        flock.add(duckFactory.createRubberDuck());
+        flock.add(new GooseAdapter(new Goose()));
 
-        System.out.println("\nDUck Simulator: With Abstract Factory");
+        System.out.println("\nDuck Simulator: With Abstract Factory");
 
-        simulate(mallardDuck);
-        simulate(redheadDuck);
-        simulate(duckCall);
-        simulate(rubberDuck);
-        simulate(gooseDuck);
+        flock.quack();
 
         System.out.println("The ducks quacked " + QuackCounter.getQuacks() + " times");
     }
