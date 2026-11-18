@@ -8,16 +8,28 @@ public class DuckSimulator {
     }
 
     void simulate(AbstractDuckFactory duckFactory) {
+        System.out.println("Duck Simulator: With Composite - Flocks");
+        System.out.println("Duck Simulator: Whole Flock Simulation");
         Flock flock = new Flock();
         flock.add(duckFactory.createMallardDuck());
-        flock.add(duckFactory.createRedheadDuck());
         flock.add(duckFactory.createDuckCall());
         flock.add(duckFactory.createRubberDuck());
         flock.add(new GooseAdapter(new Goose()));
-
-        System.out.println("\nDuck Simulator: With Abstract Factory");
-
+        flock.add(duckFactory.createMallardDuck());
+        flock.add(duckFactory.createMallardDuck());
+        flock.add(duckFactory.createMallardDuck());
+        flock.add(duckFactory.createMallardDuck());
         flock.quack();
+        System.out.println();
+
+        System.out.println("Duck Simulator :Mallard Flock Simulation");
+        Flock mallardFlock = new Flock();
+        mallardFlock.add(duckFactory.createMallardDuck());
+        mallardFlock.add(duckFactory.createMallardDuck());
+        mallardFlock.add(duckFactory.createMallardDuck());
+        mallardFlock.add(duckFactory.createMallardDuck());
+        mallardFlock.quack();
+        System.out.println();
 
         System.out.println("The ducks quacked " + QuackCounter.getQuacks() + " times");
     }
