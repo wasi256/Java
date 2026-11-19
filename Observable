@@ -1,0 +1,20 @@
+public class Observable implements QuackObservable {
+    List<Observer> observers = new ArrayList<Observer>();
+    QuackObservable duck;
+
+    public Observable(QuackObservable duck) {
+        this.duck = duck;
+    }
+
+    public void registerObserver(Observer observer) {
+        observer.add(observer);
+    }
+
+    public void notifyObservers(){
+        Iterator iterator = observers.iterator();
+        while(iterator.hasNext()) {
+            Observer observer = iterator.next();
+            observer.update(duck);
+        }
+    }
+}

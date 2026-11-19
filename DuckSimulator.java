@@ -14,7 +14,7 @@ public class DuckSimulator {
         flock.add(duckFactory.createMallardDuck());
         flock.add(duckFactory.createDuckCall());
         flock.add(duckFactory.createRubberDuck());
-        flock.add(new GooseAdapter(new Goose()));
+        flock.add(new QuackCounter(new GooseAdapter(new Goose())));
         flock.add(duckFactory.createMallardDuck());
         flock.add(duckFactory.createMallardDuck());
         flock.add(duckFactory.createMallardDuck());
